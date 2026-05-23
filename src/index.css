@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --surface: 255 255 255;
+  --surface-muted: 247 247 245;
+  --surface-elevated: 255 255 255;
+  --ink: 55 53 47;
+  --ink-muted: 120 119 116;
+  --notion-border: 227 226 224;
+  --notion-hover: 241 241 239;
+}
+
+.dark {
+  --surface: 25 25 25;
+  --surface-muted: 32 32 32;
+  --surface-elevated: 37 37 37;
+  --ink: 255 255 255;
+  --ink-muted: 155 155 155;
+  --notion-border: 55 55 55;
+  --notion-hover: 42 42 42;
+}
+
+body {
+  @apply bg-surface text-ink font-sans;
+}
+
+.tiptap {
+  @apply min-h-[50vh] max-w-none text-[15px] leading-relaxed text-ink outline-none;
+}
+
+.tiptap h1 {
+  @apply text-3xl font-bold;
+}
+.tiptap h2 {
+  @apply mt-6 text-2xl font-semibold;
+}
+.tiptap h3 {
+  @apply mt-4 text-xl font-semibold;
+}
+.tiptap p {
+  @apply my-2;
+}
+.tiptap ul:not([data-type='taskList']) {
+  @apply my-2 list-disc pl-6;
+}
+.tiptap ol {
+  @apply my-2 list-decimal pl-6;
+}
+.tiptap code {
+  @apply rounded bg-slate-900/90 px-1 py-0.5 font-mono text-[0.9em] text-slate-100;
+}
+.tiptap pre {
+  @apply my-3 overflow-x-auto rounded-xl bg-slate-900 p-3 text-sm text-slate-100;
+}
+.tiptap a {
+  @apply text-indigo-600 underline;
+}
+.tiptap p.is-editor-empty:first-child::before {
+  @apply pointer-events-none float-left h-0 text-ink-muted;
+  content: attr(data-placeholder);
+}
+
+.tiptap table {
+  @apply border-collapse w-full;
+}
+
+.tiptap th,
+.tiptap td {
+  @apply border border-slate-200 dark:border-slate-700 px-2 py-1 align-top;
+}
+
+.tiptap ul[data-type='taskList'] {
+  @apply list-none pl-0;
+}
+
+.tiptap ul[data-type='taskList'] li {
+  @apply flex gap-2;
+}
+
+.tiptap ul[data-type='taskList'] li > label {
+  @apply flex-none select-none;
+}
+
+.tiptap ul[data-type='taskList'] li > div {
+  @apply flex-1;
+}
