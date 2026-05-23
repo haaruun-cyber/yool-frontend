@@ -11,17 +11,17 @@ export const authApi = {
   sendVerification: () => api.post('/auth/send-verification'),
   googleStatus: () => api.get('/auth/google/status'),
   googleLogin: async () => {
+    const apiRoot = (api.defaults.baseURL || '').replace(/\/api\/?$/, '');
     try {
       const { data } = await authApi.googleStatus();
       if (data.startUrl) {
-        // Same origin as frontend so OAuth cookies match callback (Vite proxies /api → backend)
         window.location.href = data.startUrl;
         return;
       }
     } catch {
       /* fallback below */
     }
-    window.location.href = `${window.location.origin}/api/auth/google`;
+    window.location.href = `${apiRoot || window.location.origin}/api/auth/google`;
   },
 };
 
